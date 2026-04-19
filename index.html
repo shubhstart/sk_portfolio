@@ -712,7 +712,7 @@ footer {
     <a href="/sk_portfolio/#certifications">Certs</a>
     <a href="/sk_portfolio/#brno">Brno</a>
     <a href="/sk_portfolio/#contact">Contact</a>
-    <a href="https://myportfolio-flax-delta.vercel.app/Shubham_Kumar_AI_PM_Resume_Updated.pdf" class="nav-cta" target="_blank">Resume ↗</a>
+    <a href="https://drive.google.com/file/d/1NM0t0rLfSGor5yI8TqDlJOyuCAL_krRh/view" class="nav-cta" target="_blank">Resume ↗</a>
   </div>
 </nav>
 
@@ -1231,11 +1231,13 @@ function type() {
 }
 type();
 
-/* ── Live clock (Bangalore IST = UTC+5:30) ─────────── */
+/* ── Live clock — true IST (UTC+5:30) ─────────── */
 function updateClock() {
   const now = new Date();
-  const ist = new Date(now.getTime() + (5.5 * 60 - now.getTimezoneOffset()) * 60000);
-  const h = ist.getUTCHours(), m = ist.getUTCMinutes(), s = ist.getUTCSeconds();
+  const istOffset = 5.5 * 60; // IST is UTC+5:30 in minutes
+  const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+  const ist = new Date(utc + istOffset * 60000);
+  const h = ist.getHours(), m = ist.getMinutes(), s = ist.getSeconds();
   const ampm = h >= 12 ? 'PM' : 'AM';
   const hh = ((h % 12) || 12).toString().padStart(2,'0');
   document.getElementById('live-clock').textContent =
